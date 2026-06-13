@@ -46,6 +46,8 @@ const Map2D = ({ onCountryClick }) => {
         />
         
         {countriesData.map((country) => {
+          if (typeof country.lat === 'undefined' || typeof country.lng === 'undefined') return null;
+
           let icon = defaultIcon;
           if (country.visited) icon = visitedIcon;
           else if (country.nextDestination) icon = nextIcon;
