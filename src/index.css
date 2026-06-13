@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-primary text-gray-100 font-sans antialiased overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-accent text-white rounded-full font-semibold transition-all hover:bg-accent/90 hover:scale-105 hover:shadow-lg hover:shadow-accent/30 flex items-center justify-center gap-2;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-full font-semibold transition-all border border-white/20 hover:bg-white/20 hover:scale-105 flex items-center justify-center gap-2;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1A2E; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E94560; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d83d56; 
+}
+
+/* Global transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms, transform 400ms;
+}
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 400ms, transform 400ms;
+}

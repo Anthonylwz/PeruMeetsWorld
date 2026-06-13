@@ -1,0 +1,110 @@
+[
+  {
+    "id": "ESP",
+    "name": "España",
+    "slug": "espana",
+    "visited": true,
+    "favorite": true,
+    "nextDestination": false,
+    "lat": 40.4168,
+    "lng": -3.7038,
+    "coverImage": "https://www.civitatis.com/blog/wp-content/uploads/2021/04/alhambra-granada-espana.jpg",
+    "videoId": "kz7pd2J3Aoo",
+    "experiences": [
+      {
+        "id": 1,
+        "title": "Madrid",
+        "description": "Explorando la capital, sus museos y tapas.",
+        "location": "Madrid",
+        "date": "Mayo 2026",
+        "image": "https://images.unsplash.com/photo-1539037116271-8c56b5f812e9?auto=format&fit=crop&q=80&w=1000"
+      },
+      {
+        "id": 2,
+        "title": "Barcelona",
+        "description": "La arquitectura increíble de Gaudí.",
+        "location": "Barcelona",
+        "date": "Mayo 2026",
+        "image": "https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&q=80&w=1000"
+      }
+    ]
+  },
+  {
+    "id": "FRA",
+    "name": "Francia",
+    "slug": "francia",
+    "visited": true,
+    "coverImage": "https://aunclicdelaaventura.com/wp-content/uploads/2018/11/Viajar-a-Francia-Torre-Eiffel.jpg",
+    "videoId": "lYRlIF1bH-o",
+    "instagramUrl": "https://www.instagram.com/reel/DYpA13SIsCH/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    "tiktokUrl": "https://www.tiktok.com/@perumeetsworld/video/7644618685042199829"
+  },
+  {
+    "id": "THA",
+    "name": "Tailandia",
+    "slug": "tailandia",
+    "visited": true,
+    "favorite": true,
+    "nextDestination": false,
+    "lat": 13.7563,
+    "lng": 100.5018,
+    "coverImage": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&q=80&w=2000",
+    "videoId": "qQzdAsjWGPg",
+    "experiences": [
+      {
+        "id": 4,
+        "title": "Templos Antiguos",
+        "description": "Una experiencia espiritual inolvidable.",
+        "location": "Chiang Mai",
+        "date": "Enero 2026",
+        "image": "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&q=80&w=1000"
+      }
+    ]
+  },
+  {
+    "id": "JPN",
+    "name": "Japón",
+    "slug": "japon",
+    "visited": false,
+    "favorite": false,
+    "nextDestination": true,
+    "lat": 35.6762,
+    "lng": 139.6503,
+    "coverImage": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=2000",
+    "reason": "La mezcla perfecta entre tecnología futurista y tradición milenaria.",
+    "estimatedDate": "Octubre 2026",
+    "placesOfInterest": [
+      "Tokio",
+      "Kioto",
+      "Osaka",
+      "Monte Fuji"
+    ],
+    "typicalWeather": "Templado",
+    "funFacts": [
+      "Tienen trenes bala",
+      "Más de 5 millones de máquinas expendedoras"
+    ]
+  },
+  {
+    "id": "PER",
+    "name": "Perú",
+    "slug": "peru",
+    "visited": true,
+    "favorite": true,
+    "nextDestination": false,
+    "lat": -9.1899,
+    "lng": -75.0152,
+    "coverImage": "https://dynamic-media.tacdn.com/media/photo-o/2f/ba/e1/6f/caption.jpg?w=2400&h=-1&s=1",
+    "videoId": "ebGaap3OGkU",
+    "experiences": [
+      {
+        "id": 5,
+        "title": "Machu Picchu",
+        "description": "El asombroso imperio Inca.",
+        "location": "Cusco",
+        "date": "Diciembre 2025",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy-MJiAKvCdKkhwO52h6p8U-Iw0N_xodvulw&s"
+      }
+    ]
+  }
+]
