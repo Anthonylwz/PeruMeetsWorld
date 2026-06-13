@@ -7,16 +7,16 @@ const About = () => {
     <div className="min-h-screen bg-primary">
       {/* Hero Section */}
       <div className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        {/* Placeholder image from unsplash representing a couple traveling */}
+        {/* Real image of the couple */}
         <div className="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1522881113593-3932759c9869?auto=format&fit=crop&q=80&w=2000" alt="Nosotros" className="w-full h-full object-cover opacity-60" />
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMgfC_ufAXF6-3aWsUY8sH8qiZIF_2ELsSFA&s" alt="Los Dodos" className="w-full h-full object-cover opacity-60" />
           <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent" />
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-heading font-extrabold text-white mb-6">Nuestra Historia</h1>
+          <h1 className="text-5xl md:text-7xl font-heading font-extrabold text-white mb-6">Los Dodos 🦤</h1>
           <p className="text-xl text-gray-200 font-light leading-relaxed">
-            Dos almas peruanas descubriendo el mundo, una aventura a la vez. No somos guías, somos exploradores compartiendo lo que el mundo nos enseña.
+            Somos una pareja peruana viajando por el mundo… aunque muchos ya nos conocen como los Señores Gold o los Dodos ❤️
           </p>
         </div>
 
@@ -30,21 +30,22 @@ const About = () => {
 
           <div className="space-y-8">
             <div>
-              <h2 className="text-3xl font-heading font-bold text-white mb-4">¿Quiénes Somos?</h2>
+              <h2 className="text-3xl font-heading font-bold text-white mb-4">Descripción</h2>
               <div className="w-16 h-1 bg-accent mb-6 rounded-full"></div>
+              <p className="text-gray-300 leading-relaxed text-lg mb-4">
+                Somos una pareja peruana viajando por el mundo… aunque muchos ya nos conocen como los Señores Gold o los Dodos🦤❤️
+              </p>
+              <p className="text-gray-300 leading-relaxed text-lg mb-4">
+                Aquí compartimos viajes caóticos en pareja, comida increíble, cultura, aventuras y lo bonito y no tan bonito de explorar el mundo juntos.
+              </p>
               <p className="text-gray-300 leading-relaxed text-lg">
-                Somos una pareja apasionada por descubrir qué hay más allá de nuestra zona de confort. Nacimos en Perú, un país lleno de cultura, y eso nos impulsó a querer conocer las culturas del resto del mundo.
+                Empezamos recorriendo Europa y luego nos vamos al Sudeste Asiático… y esto recién comienza. 🌏
               </p>
             </div>
 
             <div className="glass-panel p-6 border-l-4 border-l-accent">
-              <h3 className="text-xl font-bold text-white mb-2">Nuestra Misión</h3>
-              <p className="text-gray-400">Inspirar a otros a empacar su mochila, dejar los miedos y atreverse a vivir experiencias reales. Mostrar que el mundo es menos aterrador y más asombroso de lo que parece.</p>
-            </div>
-
-            <div className="glass-panel p-6 border-l-4 border-l-[#F39C12]">
-              <h3 className="text-xl font-bold text-white mb-2">Nuestra Visión</h3>
-              <p className="text-gray-400">Crear una comunidad de viajeros donde las fronteras sean solo líneas en un mapa y las conexiones humanas sean el verdadero tesoro del viaje.</p>
+              <h3 className="text-xl font-bold text-white mb-2">¡Únete a la familia!</h3>
+              <p className="text-gray-400">🦤 Súmate a la familia de Doditos y viaja con nosotros.</p>
             </div>
 
             <div className="pt-6">
@@ -62,7 +63,7 @@ const About = () => {
 
           <div className="relative">
             <div className="aspect-[3/4] rounded-3xl overflow-hidden border-2 border-white/10 relative z-10 shadow-2xl">
-              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1000" alt="En la playa" className="w-full h-full object-cover" />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMgfC_ufAXF6-3aWsUY8sH8qiZIF_2ELsSFA&s" alt="Los Dodos" className="w-full h-full object-cover" />
             </div>
             {/* Decorative elements */}
             <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-accent/20 rounded-full blur-3xl -z-10"></div>
@@ -76,4 +77,5 @@ const About = () => {
 };
 
 export default About;
+
 
