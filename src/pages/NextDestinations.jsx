@@ -12,7 +12,6 @@ const NextDestinations = () => {
         
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Próximos Destinos</h1>
-          <div className="w-16 h-1 bg-[#F39C12] rounded-full mb-6"></div>
           <p className="text-gray-400 max-w-2xl">
             El mapa es grande y nuestra lista de deseos aún más. Estos son los lugares que estamos planeando descubrir pronto.
           </p>

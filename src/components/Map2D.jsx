@@ -1,4 +1,5 @@
-import { MapContainer as LeafletMap, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import { useRef } from 'react';
+import { MapContainer as LeafletMap, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import countriesData from '../data/countries.json';
@@ -29,12 +30,35 @@ const visitedIcon = createCustomIcon('#E94560');
 const nextIcon = createCustomIcon('#F39C12');
 const defaultIcon = createCustomIcon('#ffffff');
 
-const Map2D = ({ onCountryClick }) => {
+const Map2D = ({ onCountryClick, onZoomStart }) => {
+  const mapRef = useRef(null);
+
+  const handleMarkerClick = (country) => {
+    // Notificamos al Home para que inicie la transición fluida de imagen (igual que en 3D)
+    onZoomStart && onZoomStart(country);
+
+    const map = mapRef.current;
+    if (map) {
+      // Acercamiento suave y extendido a 2.2 segundos para igualar la transición 3D
+      map.flyTo([country.lat, country.lng], 6, {
+        duration: 2.2,
+        easeLinearity: 0.25
+      });
+      // Esperamos a que la animación y el overlay terminen
+      setTimeout(() => {
+        onCountryClick(country);
+      }, 2200);
+    } else {
+      onCountryClick(country);
+    }
+  };
+
   return (
     <div className="absolute inset-0 z-0">
-      <LeafletMap 
-        center={[20, 0]} 
-        zoom={3} 
+      <LeafletMap
+        ref={mapRef}
+        center={[20, 0]}
+        zoom={3}
         style={{ height: '100vh', width: '100%', background: '#1A1A2E' }}
         zoomControl={false}
         worldCopyJump={true}
@@ -44,7 +68,7 @@ const Map2D = ({ onCountryClick }) => {
           url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
         />
-        
+
         {countriesData.map((country) => {
           if (typeof country.lat === 'undefined' || typeof country.lng === 'undefined') return null;
 
@@ -53,32 +77,14 @@ const Map2D = ({ onCountryClick }) => {
           else if (country.nextDestination) icon = nextIcon;
 
           return (
-            <Marker 
-              key={country.id} 
-              position={[country.lat, country.lng]} 
+            <Marker
+              key={country.id}
+              position={[country.lat, country.lng]}
               icon={icon}
               eventHandlers={{
-                click: () => onCountryClick(country)
+                click: () => handleMarkerClick(country)
               }}
-            >
-              <Popup className="custom-popup">
-                <div className="font-sans text-center">
-                  <h3 className="font-bold text-gray-800">{country.name}</h3>
-                  <p className="text-xs text-gray-500 mb-2">
-                    {country.visited ? 'Visitado' : (country.nextDestination ? 'Próximo Destino' : 'No Visitado')}
-                  </p>
-                  <button 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onCountryClick(country);
-                    }}
-                    className="bg-accent text-white px-3 py-1 text-xs rounded-full hover:bg-accent/90 transition-colors"
-                  >
-                    Ver detalles
-                  </button>
-                </div>
-              </Popup>
-            </Marker>
+            />
           );
         })}
       </LeafletMap>

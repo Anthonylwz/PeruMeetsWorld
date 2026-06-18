@@ -1,9 +1,44 @@
 import { useState, useEffect, useRef } from 'react';
 import Globe from 'globe.gl';
-import { useNavigate } from 'react-router-dom';
 import countriesData from '../data/countries.json';
 
-const Earth3D = ({ onCountryClick }) => {
+const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+const lerpLng = (a, b, t) => {
+  let diff = b - a;
+  if (diff > 180) diff -= 360;
+  if (diff < -180) diff += 360;
+  return a + diff * t;
+};
+
+const smoothZoom = (globe, targetLat, targetLng, targetAlt, duration, onComplete) => {
+  const start = globe.pointOfView();
+  const startTime = performance.now();
+  let rafId;
+
+  const tick = (now) => {
+    const elapsed = now - startTime;
+    const raw = Math.min(elapsed / duration, 1);
+    const t = easeInOutCubic(raw);
+
+    globe.pointOfView({
+      lat: start.lat + (targetLat - start.lat) * t,
+      lng: lerpLng(start.lng, targetLng, t),
+      altitude: start.altitude + (targetAlt - start.altitude) * t,
+    });
+
+    if (raw < 1) {
+      rafId = requestAnimationFrame(tick);
+    } else {
+      onComplete && onComplete();
+    }
+  };
+
+  rafId = requestAnimationFrame(tick);
+  return () => cancelAnimationFrame(rafId);
+};
+
+const Earth3D = ({ onCountryClick, onZoomStart }) => {
   const containerRef = useRef(null);
   const [globeWidth, setGlobeWidth] = useState(window.innerWidth);
 
@@ -16,8 +51,7 @@ const Earth3D = ({ onCountryClick }) => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Filter points based on visited or not, or just show all but differently
-    const pointsData = countriesData.map(c => ({
+    const pointsData = countriesData.map((c) => ({
       lat: c.lat,
       lng: c.lng,
       size: c.visited ? 1.5 : 0.8,
@@ -26,11 +60,14 @@ const Earth3D = ({ onCountryClick }) => {
       slug: c.slug,
       visited: c.visited,
       nextDestination: c.nextDestination,
-      id: c.id
+      id: c.id,
+      coverImage: c.coverImage
     }));
 
-    const myGlobe = Globe()
-      (containerRef.current)
+    let isAnimating = false;
+    let cancelZoom = null;
+
+    const myGlobe = Globe()(containerRef.current)
       .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
       .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
       .pointsData(pointsData)
@@ -42,23 +79,54 @@ const Earth3D = ({ onCountryClick }) => {
       .height(window.innerHeight)
       .pointLabel('name')
       .onPointClick((point) => {
-        onCountryClick(point);
+        if (isAnimating) return;
+        isAnimating = true;
+
+        // Avisar a Home para mostrar la imagen sobre el globo sin corte
+        onZoomStart && onZoomStart(point);
+
+        const controls = myGlobe.controls();
+        const originalSpeed = controls.autoRotateSpeed;
+        let speedRamp = originalSpeed;
+        const rampInterval = setInterval(() => {
+          speedRamp = Math.max(0, speedRamp - 0.05);
+          controls.autoRotateSpeed = speedRamp;
+          if (speedRamp === 0) {
+            controls.autoRotate = false;
+            clearInterval(rampInterval);
+          }
+        }, 16);
+
+        cancelZoom = smoothZoom(
+          myGlobe,
+          point.lat,
+          point.lng,
+          0.35,
+          2200,
+          () => {
+            onCountryClick(point);
+            controls.autoRotate = true;
+            controls.autoRotateSpeed = originalSpeed;
+            isAnimating = false;
+          }
+        );
       });
 
     myGlobe.controls().autoRotate = true;
     myGlobe.controls().autoRotateSpeed = 0.5;
 
-    // Optionally add arcs for routes
-    const arcsData = [];
-    // We can populate this later
-
     return () => {
-      // Clean up globe
+      if (cancelZoom) cancelZoom();
       myGlobe._destructor();
     };
-  }, [globeWidth, onCountryClick]);
+  }, [globeWidth, onCountryClick, onZoomStart]);
 
-  return <div ref={containerRef} className="absolute inset-0 cursor-grab active:cursor-grabbing" />;
+  return (
+    <div
+      ref={containerRef}
+      className="absolute inset-0 cursor-grab active:cursor-grabbing"
+    />
+  );
 };
 
 export default Earth3D;

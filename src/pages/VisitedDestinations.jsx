@@ -12,7 +12,6 @@ const VisitedDestinations = () => {
         
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Destinos Visitados</h1>
-          <div className="w-16 h-1 bg-accent rounded-full mb-6"></div>
           <p className="text-gray-400 max-w-2xl">
             Explora los países en los que ya hemos dejado nuestra huella. Fotos, videos y tips basados en nuestras experiencias reales.
           </p>

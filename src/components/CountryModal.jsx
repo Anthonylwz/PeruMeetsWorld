@@ -12,21 +12,16 @@ const CountryModal = ({ country, onClose }) => {
     };
     window.addEventListener('keydown', handleEsc);
     
-    // Fetch from REST Countries API
+    // Fetch through Vite proxy → restcountries.com (avoids CORS block)
     const fetchCountryData = async () => {
       try {
         setLoading(true);
-        // Usar código ISO (id) o el nombre, para mayor precisión usamos el endpoint 'alpha' si tenemos código 3 letras, o por nombre si no
-        let query = country.id.length === 3 ? `alpha/${country.id}` : `name/${country.name}?fullText=true`;
-        
-        // Handling special cases if id is not standard ISO 3
-        const response = await fetch(`https://restcountries.com/v3.1/${query}`);
-        if (!response.ok) {
-          // fallback to name search
-          const resName = await fetch(`https://restcountries.com/v3.1/name/${country.name}`);
-          const dataName = await resName.json();
-          setApiData(dataName[0]);
-        } else {
+        const query = country.id.length === 3
+          ? `/api/countries/alpha/${country.id}?fields=flags,capital,region,population,currencies`
+          : `/api/countries/name/${encodeURIComponent(country.name)}?fullText=true&fields=flags,capital,region,population,currencies`;
+
+        const response = await fetch(query);
+        if (response.ok) {
           const data = await response.json();
           setApiData(Array.isArray(data) ? data[0] : data);
         }

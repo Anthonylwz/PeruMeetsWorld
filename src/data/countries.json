@@ -13,19 +13,19 @@
     "experiences": [
       {
         "id": 1,
-        "title": "Madrid",
-        "description": "Explorando la capital, sus museos y tapas.",
+        "title": "España",
+        "description": "Explorando ",
         "location": "Madrid",
         "date": "Mayo 2026",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMgfC_ufAXF6-3aWsUY8sH8qiZIF_2ELsSFA&s"
+        "image": "https://res.cloudinary.com/drtvfrfpm/image/upload/v1781802125/nm3xsplveffhr6fcy5li.jpg"
       },
       {
-        "id": 2,
-        "title": "Barcelona",
-        "description": "La arquitectura increíble de Gaudí.",
-        "location": "Barcelona",
-        "date": "Mayo 2026",
-        "image": "https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&q=80&w=1000"
+        "id": 492,
+        "title": "España",
+        "description": "...",
+        "location": "madrid",
+        "date": "mayo",
+        "video": "https://res.cloudinary.com/drtvfrfpm/video/upload/v1781802583/kt5q16vyz6b7myntxzyw.mp4"
       }
     ]
   },
@@ -38,8 +38,32 @@
     "lng": 2.2137,
     "coverImage": "https://aunclicdelaaventura.com/wp-content/uploads/2018/11/Viajar-a-Francia-Torre-Eiffel.jpg",
     "videoId": "lYRlIF1bH-o",
-    "instagramUrl": "https://www.instagram.com/reel/DYpA13SIsCH/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    "tiktokUrl": "https://www.tiktok.com/@perumeetsworld/video/7644618685042199829"
+    "experiences": [
+      {
+        "id": 1,
+        "title": "París",
+        "description": "foto en la torre ifel.",
+        "location": "París",
+        "date": "mayo",
+        "image": "https://res.cloudinary.com/drtvfrfpm/image/upload/v1781801339/fmivjbwpuxtxywnqufxl.jpg"
+      },
+      {
+        "id": 88369,
+        "title": "torre ifel",
+        "description": "",
+        "location": "paris",
+        "date": "Mayo",
+        "video": "https://res.cloudinary.com/drtvfrfpm/video/upload/v1781754908/fmuyupfpysnfvvbsn436.mp4"
+      },
+      {
+        "id": 49401,
+        "title": "disney francia",
+        "description": "...",
+        "location": "francia",
+        "date": "mayo",
+        "video": "https://res.cloudinary.com/drtvfrfpm/video/upload/v1781801079/chq1egbaaj5eyqhw6gwn.mp4"
+      }
+    ]
   },
   {
     "id": "THA",
@@ -51,15 +75,23 @@
     "lat": 13.7563,
     "lng": 100.5018,
     "coverImage": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&q=80&w=2000",
-    "videoId": "qQzdAsjWGPg",
+    "videoId": "DW0S3rlQsQc",
     "experiences": [
       {
-        "id": 4,
-        "title": "Templos Antiguos",
-        "description": "Una experiencia espiritual inolvidable.",
-        "location": "Chiang Mai",
-        "date": "Enero 2026",
-        "image": "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&q=80&w=1000"
+        "id": 69677,
+        "title": "tailandia",
+        "description": "...",
+        "location": " Bangkok",
+        "date": "junio",
+        "video": "https://res.cloudinary.com/drtvfrfpm/video/upload/v1781802960/ytqudpx52zagylvqulyd.mp4"
+      },
+      {
+        "id": 57953,
+        "title": "tailandia",
+        "description": "...",
+        "location": " Bangkok",
+        "date": "junio",
+        "image": "https://res.cloudinary.com/drtvfrfpm/image/upload/v1781803567/dct0rsn7cbdl8uggs36k.jpg"
       }
     ]
   },
@@ -100,12 +132,20 @@
     "videoId": "ebGaap3OGkU",
     "experiences": [
       {
-        "id": 5,
-        "title": "Machu Picchu",
-        "description": "El asombroso imperio Inca.",
-        "location": "Cusco",
-        "date": "Diciembre 2025",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy-MJiAKvCdKkhwO52h6p8U-Iw0N_xodvulw&s"
+        "id": 75839,
+        "title": "perú",
+        "description": "...",
+        "location": "cusco ",
+        "date": "febrero",
+        "video": "https://res.cloudinary.com/drtvfrfpm/video/upload/v1781803940/tam3io9p6m7zszd1dgjl.mp4"
+      },
+      {
+        "id": 38593,
+        "title": "perú",
+        "description": "viaje en tren a Machu Picchu",
+        "location": "cusco ",
+        "date": "febrero",
+        "video": "https://res.cloudinary.com/drtvfrfpm/video/upload/v1781804384/iocqzrfnhcvxcr3k7vgn.mp4"
       }
     ]
   }
