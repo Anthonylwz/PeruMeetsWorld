@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-primary text-gray-100 font-sans antialiased overflow-x-hidden;
+    @apply bg-[#0C0C0C] text-gray-100 font-sans antialiased overflow-x-hidden;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -34,7 +34,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #1A1A2E; 
+  background: #0C0C0C; 
 }
 
 ::-webkit-scrollbar-thumb {

@@ -2,6 +2,7 @@ import { useState, useCallback, Suspense, lazy } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Map, Globe } from 'lucide-react';
 import CountryModal from '../components/CountryModal';
+import Loader from '../components/Loader';
 import countriesData from '../data/countries.json';
 
 const Earth3D = lazy(() => import('../components/Earth3D'));
@@ -32,8 +33,6 @@ const Home = () => {
   const handleCountryClick = useCallback((country) => {
     if (country.visited) {
       navigate(`/${country.slug}`);
-    } else if (country.nextDestination) {
-      navigate(`/next/${country.slug}`);
     } else {
       setSelectedCountry(country);
     }
@@ -47,11 +46,7 @@ const Home = () => {
   return (
     <div className="h-screen w-full relative overflow-hidden -mt-20">
       {/* Background Map Container */}
-      <Suspense fallback={
-        <div className="absolute inset-0 bg-primary flex items-center justify-center">
-          <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
-        </div>
-      }>
+      <Suspense fallback={<Loader fullScreen={false} />}>
         {viewMode === '3D' ? (
           <Earth3D onCountryClick={handleCountryClick} onZoomStart={handleZoomStart} />
         ) : (
@@ -79,7 +74,7 @@ const Home = () => {
             }}
           />
           {/* Este degradado es el mismo que tiene el hero de CountryDetail y la vista de inicio */}
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/60 to-primary" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0C0C0C]/40 via-[#0C0C0C]/80 to-[#0C0C0C]" />
         </div>
       )}
 
@@ -137,10 +132,6 @@ const Home = () => {
           <div className="flex items-center gap-3">
             <span className="w-3 h-3 rounded-full bg-[#E94560] shadow-[0_0_10px_#E94560]"></span>
             <span className="text-xs text-gray-300">Visitado</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="w-3 h-3 rounded-full bg-[#F39C12] shadow-[0_0_10px_#F39C12]"></span>
-            <span className="text-xs text-gray-300">Próximo Destino</span>
           </div>
         </div>
       </div>

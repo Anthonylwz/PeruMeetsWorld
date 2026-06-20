@@ -27,8 +27,6 @@ const createCustomIcon = (color) => {
 };
 
 const visitedIcon = createCustomIcon('#E94560');
-const nextIcon = createCustomIcon('#F39C12');
-const defaultIcon = createCustomIcon('#ffffff');
 
 const Map2D = ({ onCountryClick, onZoomStart }) => {
   const mapRef = useRef(null);
@@ -59,7 +57,7 @@ const Map2D = ({ onCountryClick, onZoomStart }) => {
         ref={mapRef}
         center={[20, 0]}
         zoom={3}
-        style={{ height: '100vh', width: '100%', background: '#1A1A2E' }}
+        style={{ height: '100vh', width: '100%', background: '#0C0C0C' }}
         zoomControl={false}
         worldCopyJump={true}
       >
@@ -69,18 +67,14 @@ const Map2D = ({ onCountryClick, onZoomStart }) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
         />
 
-        {countriesData.map((country) => {
+        {countriesData.filter(c => c.visited).map((country) => {
           if (typeof country.lat === 'undefined' || typeof country.lng === 'undefined') return null;
-
-          let icon = defaultIcon;
-          if (country.visited) icon = visitedIcon;
-          else if (country.nextDestination) icon = nextIcon;
 
           return (
             <Marker
               key={country.id}
               position={[country.lat, country.lng]}
-              icon={icon}
+              icon={visitedIcon}
               eventHandlers={{
                 click: () => handleMarkerClick(country)
               }}

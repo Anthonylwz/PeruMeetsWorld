@@ -19,14 +19,13 @@ const Navbar = () => {
     { name: 'Inicio', path: '/' },
     { name: 'Rutas de Viaje', path: '/routes' },
     { name: 'Destinos Visitados', path: '/visited' },
-    { name: 'Próximos Destinos', path: '/next' },
     { name: 'Sobre Nosotros', path: '/about' },
   ];
 
   return (
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-primary/80 backdrop-blur-md shadow-lg shadow-black/20 border-b border-white/10 py-3' : 'bg-transparent py-5'
+        scrolled ? 'bg-black/80 backdrop-blur-md shadow-lg shadow-black/20 border-b border-white/10 py-3' : 'bg-transparent py-5'
       }`}
     >
       <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center">
@@ -63,7 +62,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-primary/95 backdrop-blur-xl border-b border-white/10 shadow-2xl">
+        <div className="lg:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-b border-white/10 shadow-2xl">
           <nav className="flex flex-col py-6 px-6 gap-4">
             {navLinks.map((link) => (
               <Link 

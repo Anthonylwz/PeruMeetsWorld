@@ -96,6 +96,19 @@
     ]
   },
   {
+    "id": "LAO",
+    "name": "Laos",
+    "slug": "laos",
+    "visited": true,
+    "favorite": false,
+    "nextDestination": false,
+    "lat": 19.8563,
+    "lng": 102.4955,
+    "coverImage": "https://images.unsplash.com/photo-1540611025311-01df3cef54b5?auto=format&fit=crop&q=80&w=2000",
+    "videoId": "",
+    "experiences": []
+  },
+  {
     "id": "JPN",
     "name": "Japón",
     "slug": "japon",

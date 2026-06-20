@@ -51,15 +51,16 @@ const Earth3D = ({ onCountryClick, onZoomStart }) => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const pointsData = countriesData.map((c) => ({
+    const pointsData = countriesData
+      .filter(c => c.visited)
+      .map((c) => ({
       lat: c.lat,
       lng: c.lng,
-      size: c.visited ? 1.5 : 0.8,
-      color: c.visited ? '#E94560' : (c.nextDestination ? '#F39C12' : '#ffffff'),
+      size: 1.5,
+      color: '#E94560',
       name: c.name,
       slug: c.slug,
       visited: c.visited,
-      nextDestination: c.nextDestination,
       id: c.id,
       coverImage: c.coverImage
     }));
